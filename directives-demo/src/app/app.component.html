@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="x-cols-12">
+      <input type="text" class="form-control" [(ngModel)]="textValue">
+      <button class="btn btn-primary">Directive Demo</button>
+      <p>Below will be only displayed if text = KARTIK</p>
+      <p *ngIf="textValue === 'KARTIK'">Name is KARTIK</p>
+      <hr>
+      <p *ngIf="isKartik()">Name is KARTIK from Function</p>
+      <p *ngIf="isKartik(); else noName">Name is KARTIK using NG</p>
+      <ng-template #noName>
+        <p>Name is not KARTIK using Template</p>
+      </ng-template>
+      <!--ngIf is Structural Directive-->
+      <!--It can add or remove elements from HTML-->
+      <!-- While Other Directives are Attribute Directives-->
+      <!--These types of directives does not add or remove HTML elements
+      They can only change the elements we placed on-->
+
+      <button class="btn btn-primary" [disabled]="!isButtonEnabled">Test</button>
+      <!--ngStyle expects Java Script Object-->
+      <!--ngStyle allow us to dynamically apply styles-->
+      <!--ngStyle is attribute directive-->
+      <p [ngStyle]="{backgroundColor: getColor()}">Server Status: {{ isButtonEnabled }}</p>
+
+      <!--ngClass allows to dynamically add or remove class attribute-->
+      <!--ngClass also needs to use as Property Binding-->
+      <p [ngClass]="{online: isButtonEnabled}">NG Class Paragraph</p>
+
+      <!-- We can print list using ngFor directive -->
+      <label>Enter Name:</label><input type="text" [(ngModel)]="name">
+      <button class="btn btn-primary" (click)="addName()">Add Name</button>
+      <label>Names added</label>
+      <h4 *ngFor="let name of names">{{ name }}</h4>
+    </div>
+  </div>
+</div>
