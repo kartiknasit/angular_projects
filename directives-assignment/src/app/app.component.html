@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="showSecret=!showSecret">Display Details Using simple condition</button>
+      <p *ngIf="showSecret">Secret Text is Secret using simple condition</p>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-primary" (click)="displayText()">Display Details</button>
+        <button class="btn btn-primary" (click)="resetLogItems()">Reset Log Items</button>
+        <div *ngFor="let log of logs; let i = index">
+          <p [ngStyle]="{backgroundColor: log > 5 ? 'lightyellow' : 'yellow'}"
+            [ngClass]="{'red-text': log <= 5}">{{log}}</p>
+        </div>
+        <div *ngFor="let date of dates; let i = index">
+          <!-- We can also use Index for our logic-->
+          <p [ngStyle]="{backgroundColor: i > 5 ? 'lightyellow' : 'yellow'}"
+            [ngClass]="{'red-text': i <= 5}">Date: {{ date }} is at Index: {{i}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
